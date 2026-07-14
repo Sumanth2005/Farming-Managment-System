@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ title }} | FarmPro</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i>
+            <span>FarmPro</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('welcome') }}">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- PAGE HEADER -->
+
+    <header class="page-header">
+
+        <h1>{{ title }}</h1>
+
+        <p>
+            Explore different breeds and click
+            <strong>Read More</strong>
+            to view complete information.
+        </p>
+
+    </header>
+
+
+    <!-- ANIMAL CARDS -->
+
+    <main>
+
+        <section class="animal-grid">
+
+            {% if animals %}
+
+                {% for animal in animals %}
+
+                    <article class="animal-card">
+
+                        <!-- IMAGE -->
+
+                        <div class="animal-img-box">
+
+                           <img
+                                src="{{ animal.image_url if animal.image_url else 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85' }}"
+                                alt="{{ animal.name }}"
+                                class="animal-image animal-image--{{ animal.name | lower | replace(' ', '-') }}"
+                                loading="lazy"
+                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85';"
+                            >
+
+                        </div>
+
+
+                        <!-- CONTENT -->
+
+                        <div class="animal-content">
+
+                            <h2>{{ animal.name }}</h2>
+
+                            {% if animal.breed_type %}
+
+                                <span class="badge">
+                                    {{ animal.breed_type }}
+                                </span>
+
+                            {% endif %}
+
+
+                            {% if animal.description %}
+
+                                <p class="description">
+                                    {{ animal.description }}
+                                </p>
+
+                            {% endif %}
+
+
+                            <div class="short-info">
+
+                                {% if animal.purpose %}
+
+                                    <p>
+                                        <strong>Purpose:</strong>
+                                        {{ animal.purpose }}
+                                    </p>
+
+                                {% endif %}
+
+
+                                {% if animal.benefit %}
+
+                                    <p>
+                                        <strong>Benefit:</strong>
+                                        {{ animal.benefit }}
+                                    </p>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <a
+                                href="{{ url_for('animal_detail', animal_id=animal.id) }}"
+                                class="read-more-btn"
+                            >
+                                Read More
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="no-data">
+
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/7486/7486806.png"
+                        alt="No animal data available"
+                    >
+
+                    <h2>No Animals Found</h2>
+
+                    <p>
+                        There is currently no animal data available
+                        in the database.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Farming Management System |
+            Made with ❤️
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

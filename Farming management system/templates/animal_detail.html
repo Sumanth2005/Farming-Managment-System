@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ animal.name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Farm Tools CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='animal-tools.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body class="detail-body">
+
+<nav class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        FARM PRO
+    </div>
+
+    <div class="detail-nav">
+
+        <a href="/category/{{ animal.category }}" class="nav-btn back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back
+        </a>
+
+        <a href="/welcome" class="nav-btn home-btn">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+        <a href="/logout" class="nav-btn logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="detail-page">
+
+<div class="detail-card">
+
+<div class="detail-image-box">
+
+<img src="{{ animal.image_url }}"
+     alt="{{ animal.name }}"
+     onerror="this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80'">
+
+</div>
+
+<div class="detail-content">
+
+<p class="detail-label">
+{{ animal.category }}
+</p>
+
+<h1>{{ animal.name }}</h1>
+
+<span class="breed-badge">
+{{ animal.breed_type }}
+</span>
+
+<p class="main-desc">
+{{ animal.description }}
+</p>
+
+
+<div class="detail-grid">
+
+<p><b>Scientific Name:</b> {{ animal.scientific_name }}</p>
+
+<p><b>Origin:</b> {{ animal.origin }}</p>
+
+<p><b>Purpose:</b> {{ animal.purpose }}</p>
+
+<p><b>Food:</b> {{ animal.food }}</p>
+
+<p><b>Housing:</b> {{ animal.housing }}</p>
+
+<p><b>Lifespan:</b> {{ animal.lifespan }}</p>
+
+<p><b>Weight:</b> {{ animal.weight }}</p>
+
+<p><b>Production:</b> {{ animal.production }}</p>
+
+<p><b>Diseases:</b> {{ animal.diseases }}</p>
+
+<p><b>Care Tips:</b> {{ animal.care_tips }}</p>
+
+<p><b>Investment:</b> {{ animal.investment }}</p>
+
+<p><b>Profit:</b> {{ animal.profit }}</p>
+
+<p><b>Benefit:</b> {{ animal.benefit }}</p>
+
+</div>
+
+<!-- ================================================= -->
+
+<div class="farm-tools">
+
+<h2>💧 Water Requirement Calculator</h2>
+
+<div class="water-box">
+
+<label>
+
+Number of Animals
+
+</label>
+
+<input
+type="number"
+id="animalCount"
+placeholder="Enter number of animals">
+
+<button
+onclick="calculateWater(
+'{{ animal.name }}',
+'{{ animal.category }}'
+)">
+
+Calculate Water
+
+</button>
+
+<div
+id="waterResult"
+class="result-box">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================================= -->
+
+<div class="chat-box">
+
+<h2>
+
+🤖 Farm Help Desk
+
+</h2>
+
+<p>
+
+Ask anything about this animal.
+
+</p>
+
+<div
+id="chatArea"
+class="chat-area">
+
+<div class="bot">
+
+Hello 👋
+
+Ask me about
+
+<strong>{{ animal.name }}</strong>
+
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input
+
+id="userQuestion"
+
+placeholder="Example: What food does it eat?"
+
+>
+
+<button
+onclick="sendQuestion('{{ animal.id }}')">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer class="footer">
+
+© 2026 Farming Management System
+
+</footer>
+
+
+<script>
+
+const animalData = {
+
+food:`{{ animal.food }}`,
+
+housing:`{{ animal.housing }}`,
+
+purpose:`{{ animal.purpose }}`,
+
+benefit:`{{ animal.benefit }}`,
+
+diseases:`{{ animal.diseases }}`,
+
+care:`{{ animal.care_tips }}`,
+
+production:`{{ animal.production }}`,
+
+weight:`{{ animal.weight }}`,
+
+lifespan:`{{ animal.lifespan }}`,
+
+investment:`{{ animal.investment }}`,
+
+profit:`{{ animal.profit }}`
+
+};
+
+</script>
+
+<script
+src="{{ url_for('static', filename='js/animal-tools.js') }}">
+</script>
+
+</body>
+</html>

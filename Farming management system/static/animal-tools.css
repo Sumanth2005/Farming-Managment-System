@@ -1,0 +1,155 @@
+/* ===================================================
+   SMART FARM TOOLS
+===================================================*/
+
+.farm-tools,
+.chat-box{
+    margin-top:40px;
+    background:#fff;
+    border-radius:16px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.farm-tools h2,
+.chat-box h2{
+    color:#166534;
+    margin-bottom:18px;
+    font-size:28px;
+}
+
+.water-box{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.water-box label{
+    font-weight:600;
+    color:#14532d;
+}
+
+.water-box input{
+    width:100%;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
+}
+
+.water-box input:focus{
+    border-color:#16a34a;
+}
+
+.water-box button{
+    width:220px;
+    padding:14px;
+    border:none;
+    background:#16a34a;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.water-box button:hover{
+    background:#14532d;
+}
+
+.result-box{
+    margin-top:10px;
+    background:#ecfdf5;
+    border-left:5px solid #16a34a;
+    padding:18px;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    color:#14532d;
+    display:none;
+}
+
+/* =================================== */
+
+.chat-area{
+    margin-top:15px;
+    height:350px;
+    overflow-y:auto;
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:15px;
+}
+
+.bot{
+    background:#dcfce7;
+    padding:12px 18px;
+    border-radius:15px;
+    width:max-content;
+    max-width:80%;
+    margin-bottom:15px;
+}
+
+.user{
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:15px;
+    width:max-content;
+    max-width:80%;
+    margin-left:auto;
+    margin-bottom:15px;
+}
+
+.chat-input{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.chat-input input{
+    flex:1;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #d1d5db;
+    font-size:16px;
+}
+
+.chat-input button{
+    width:120px;
+    border:none;
+    background:#16a34a;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.chat-input button:hover{
+    background:#14532d;
+}
+
+/* =================================== */
+
+@media(max-width:768px){
+
+.chat-input{
+    flex-direction:column;
+}
+
+.chat-input button{
+    width:100%;
+}
+
+.water-box button{
+    width:100%;
+}
+
+.chat-area{
+    height:280px;
+}
+
+}

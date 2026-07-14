@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | Farming Management System</title>
+
+    <!-- login.css is directly inside the static folder -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='login.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- Decorative background circles -->
+        <div class="background-circle circle-one"></div>
+        <div class="background-circle circle-two"></div>
+
+
+        <!-- Lamp section -->
+        <section
+            class="lamp-section"
+            aria-label="Interactive lamp"
+        >
+
+            <div
+                class="lamp-glow"
+                id="lampGlow"
+            ></div>
+
+            <div class="lamp">
+
+                <div class="lamp-shade">
+                    <div class="lamp-light"></div>
+                </div>
+
+                <div class="lamp-neck"></div>
+
+                <div class="lamp-base-top"></div>
+
+                <div class="lamp-stand"></div>
+
+                <div class="lamp-base"></div>
+
+            </div>
+
+
+            <!-- Pull cord -->
+            <div
+                class="pull-cord-wrapper"
+                id="pullCordWrapper"
+            >
+
+                <div
+                    class="pull-cord"
+                    id="pullCord"
+                ></div>
+
+                <button
+                    type="button"
+                    class="pull-handle"
+                    id="pullHandle"
+                    aria-label="Pull the lamp cord to display the login form"
+                >
+                    <span></span>
+                </button>
+
+                <p
+                    class="pull-message"
+                    id="pullMessage"
+                >
+                    Pull the cord
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Login form card -->
+        <section
+            class="login-card"
+            id="loginCard"
+        >
+
+            <div class="login-header">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+
+                <p class="welcome-text">
+                    Welcome
+                </p>
+
+                <h1>
+                    Farm Management
+                </h1>
+
+                <p class="login-description">
+                    Enter your details to manage your farming activities
+                </p>
+
+            </div>
+
+
+            <!-- Flask flash messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% if messages %}
+
+                    <div class="flash-container">
+
+                        {% for category, message in messages %}
+
+                            <div class="flash-message {{ category }}">
+
+                                {% if category == 'success' %}
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                {% else %}
+
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                                {% endif %}
+
+                                <span>
+                                    {{ message }}
+                                </span>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+            {% endwith %}
+
+
+            <!-- Login form -->
+            <form
+                method="POST"
+                action="{{ url_for('login') }}"
+                class="login-form"
+                id="loginForm"
+            >
+
+                <!-- Name field -->
+                <div class="form-group">
+
+                    <label for="name">
+                        Full name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-user input-icon"></i>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            maxlength="60"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone field -->
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone number
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-phone input-icon"></i>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your 10-digit phone number"
+                            autocomplete="tel"
+                            inputmode="numeric"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email field -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-envelope input-icon"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Submit button -->
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+
+                    <span>
+                        Continue
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <div class="register-section">
+
+                <span>
+                    Smart farming starts here
+                </span>
+
+                <i class="fa-solid fa-leaf"></i>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- login.js is inside static/js -->
+    <script
+        src="{{ url_for('static', filename='js/login.js') }}"
+    ></script>
+
+</body>
+
+</html>

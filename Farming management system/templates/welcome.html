@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome | Farming Management System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-leaf"></i>
+
+        FarmPro
+
+    </div>
+
+    <div>
+
+        <a href="/logout" class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</nav>
+
+<section class="hero">
+
+    <h1>Welcome, {{ name }}</h1>
+
+    <p>
+        Welcome to our Farming Management System.
+        Choose a farming category to explore detailed information.
+    </p>
+
+</section>
+
+<section class="category-section">
+
+    <a href="/category/poultry" class="category-card poultry">
+
+        <h2>Poultry</h2>
+
+        <p>
+            View different types of birds and their details.
+        </p>
+
+    </a>
+
+    <a href="/category/fish" class="category-card fish">
+
+        <h2>Fish</h2>
+
+        <p>
+            Explore different types of fish used in farming.
+        </p>
+
+    </a>
+
+    <a href="/category/dairy" class="category-card dairy">
+
+        <h2>Dairy</h2>
+
+        <p>
+            View different types of cows and dairy breeds.
+        </p>
+
+    </a>
+
+</section>
+
+</body>
+
+</html>

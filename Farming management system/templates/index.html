@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Farming Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="login-body">
+
+<div class="login-wrapper">
+
+    <div class="login-info">
+        <h1>Farming Management System</h1>
+        <p>Manage poultry, fish farming, and dairy information in one professional platform.</p>
+    </div>
+
+    <div class="login-card">
+        <h2>Welcome Back</h2>
+        <p class="small-text">Enter your details to continue</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+
+            <label>Phone Number</label>
+            <input type="text" name="phone" placeholder="Enter 10 digit phone number" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
